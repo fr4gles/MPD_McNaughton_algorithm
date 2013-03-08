@@ -5,15 +5,14 @@ using System.Text;
 
 namespace MPD_McNaughton_algorithm
 {
-    class Task
+    class Processor
     {
-        public Task(String name, Int16 duration)
+        public Processor(String name)
         {
             Name = name;
-            Duration = duration;
         }
 
         public String Name { get; private set; }
-        public Int16 Duration { get; private set; }
+        public Int16 TaskDuration = 0;
     }
 }
