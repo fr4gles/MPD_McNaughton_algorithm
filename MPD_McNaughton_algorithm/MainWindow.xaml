@@ -7,7 +7,7 @@
         <Grid Width="auto">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
-                <RowDefinition Height="105"/>
+                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Menu Margin="0,0,-2,0">
@@ -21,8 +21,8 @@
                         <ColumnDefinition Width="393*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="29*"/>
-                        <RowDefinition Height="56*"/>
+                        <RowDefinition Height="29"/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Content="Liczba procesorów / maszyn:" Height="30" VerticalAlignment="Top" Margin="0,0,70,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                     <TextBox HorizontalAlignment="Left" Margin="10,3,0,6" TextWrapping="Wrap" Text="TextBox" Width="65" Grid.Column="1"/>
