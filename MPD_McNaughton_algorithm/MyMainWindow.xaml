@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:CHR="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
-        Title="MainWindow" Height="392" Width="604" MinWidth="614" SizeToContent="Height" ResizeMode="CanResize">
+        Title="MainWindow" Height="417" Width="804" MinWidth="614" SizeToContent="Height" ResizeMode="CanResize">
     <Grid Margin="0,0,0,-1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="435*" MinWidth="435"/>
@@ -13,8 +13,8 @@
             <RowDefinition Height="155" MinHeight="155"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Wprowadzanie danych" Margin="0,0,5,2">
-            <Grid HorizontalAlignment="Left" Margin="0,0,-2,-2" Width="425">
+        <GroupBox Header="Wprowadzanie danych" Margin="0,0,5,0">
+            <Grid Margin="0,0,-2,-2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="167"/>
                     <ColumnDefinition Width="50*"/>
@@ -26,8 +26,8 @@
                 </Grid.RowDefinitions>
                 <Label Content="Liczba procesorów / maszyn:" Height="30" VerticalAlignment="Top" Grid.RowSpan="2"/>
                 <TextBox Margin="0,3,0,6" TextWrapping="Wrap" Text="TextBox" Grid.Column="1"/>
-                <Button Content="Start algorytmu McNaughton'a" Grid.Column="2" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="198" Height="20"/>
-                <Expander Header="Expander" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Right" Width="415" Margin="0,0,10,0" BorderBrush="{x:Null}">
+                <Button Content="Start algorytmu McNaughton'a" Grid.Column="2" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="355" Height="20"/>
+                <Expander Header="Expander" Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="600">
                     <Border BorderThickness="1" Height="75" Margin="0,0,-2,0">
                         <Border.BorderBrush>
                             <RadialGradientBrush>
@@ -39,7 +39,7 @@
                 </Expander>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Zadania:" Margin="0,0,10,2">
+        <GroupBox Grid.Column="1" Header="Zadania:" Grid.RowSpan="2">
             <DataGrid Margin="0,0,-2,1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Zadanie:"/>
@@ -47,11 +47,10 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-        <Expander Header="Expander" Margin="0,3,0,0" Grid.Row="1" Grid.ColumnSpan="2" IsExpanded="True">
-            <WindowsFormsHost x:Name="wfHost" HorizontalAlignment="Left" Height="177" Width="606" Margin="0,0,-2,0">
-                <CHR:Chart x:Name="myChart">
-                </CHR:Chart>
-            </WindowsFormsHost>
-        </Expander>
+        <GroupBox Header="Wykres Gantt'a" Margin="0,5,5,0" Grid.Row="1">
+            <Expander Header="Expander" Margin="0,0,-12,0" IsExpanded="True">
+                <WindowsFormsHost x:Name="wfHost" Height="174" Margin="0,0,8,0"/>
+            </Expander>
+        </GroupBox>
     </Grid>
 </Window>

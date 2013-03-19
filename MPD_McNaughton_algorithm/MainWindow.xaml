@@ -28,12 +28,14 @@
                     <TextBox HorizontalAlignment="Left" Margin="10,3,0,6" TextWrapping="Wrap" Text="TextBox" Width="65" Grid.Column="1"/>
                     <Button Content="Start algorytmu McNaughton'a" Grid.Column="2" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="373"/>
                     <Expander Header="Expander" Margin="0,1,0,0" Grid.Row="1" Grid.ColumnSpan="2" IsExpanded="True" HorizontalAlignment="Right" Width="478" Grid.Column="1">
-                        <Label Content="Label" HorizontalAlignment="Left" Width="638"/>
+                        <Label Content="Label" HorizontalAlignment="Left" Width="468"/>
                     </Expander>
                 </Grid>
             </GroupBox>
-            <Expander Header="Expander" Margin="2,5,-4,10" Grid.Row="2" IsExpanded="True">
-                <Label Content="Label" HorizontalAlignment="Left" Width="125" Height="35"/>
+            <Expander Header="Expander" Margin="2,5,0,10" Grid.Row="2" IsExpanded="True" HorizontalAlignment="Left" Width="418">
+                <Expander Header="Expander" HorizontalAlignment="Left" Width="298" Height="58" Margin="65,0,0,0" ExpandDirection="Right">
+                    <Grid Background="#FFE5E5E5"/>
+                </Expander>
             </Expander>
         </Grid>
     </DockPanel>

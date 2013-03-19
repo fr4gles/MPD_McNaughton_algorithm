@@ -31,13 +31,13 @@ namespace MPD_McNaughton_algorithm
 //                throw new Exception("Ulala");
             //myChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 
-            myChart.Series.Add("My");
-
-            for (int i = 0; i < 2000; i++)
-            {
-                // Add X and Y values for a point. 
-                myChart.Series["My"].Points.AddXY(i, i);
-            }
+//            myChart.Series.Add("My");
+//
+//            for (int i = 0; i < 2000; i++)
+//            {
+//                // Add X and Y values for a point. 
+//                myChart.Series["My"].Points.AddXY(i, i);
+//            }
         }
     }
 }
