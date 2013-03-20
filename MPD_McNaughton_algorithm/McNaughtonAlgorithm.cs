@@ -30,6 +30,8 @@ namespace MPD_McNaughton_algorithm
             StartAlgo();
         }
 
+
+
         public void ClearObj()
         {
             if (ProcessorsList != null)
