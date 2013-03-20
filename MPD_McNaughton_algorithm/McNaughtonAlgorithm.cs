@@ -28,16 +28,14 @@ namespace MPD_McNaughton_algorithm
             CalculateCmax();
 
             StartAlgo();
-
-
         }
 
         public void ClearObj()
         {
-            if(ProcessorsList != null)
+            if (ProcessorsList != null)
                 ProcessorsList.Clear();
-            
-            if(TasksList != null)
+
+            if (TasksList != null)
                 TasksList.Clear();
 
             Cmax = -1;
@@ -53,12 +51,12 @@ namespace MPD_McNaughton_algorithm
         {
             var tmpList = new List<Task>(TasksList);
             tmpList = tmpList.OrderBy(x => x.Duration).ToList();
-            
+
             var max = tmpList[tmpList.Count - 1].Duration;
 
             var sum = tmpList.Sum(task => task.Duration);
 
-            Cmax = Math.Max(max, sum/ProcessorsList.Count - 1);
+            Cmax = Math.Max(max, sum / ProcessorsList.Count - 1);
         }
 
         private void StartAlgo()
@@ -73,7 +71,7 @@ namespace MPD_McNaughton_algorithm
                     var duration = 0;
                     j = jcopy;
 
-                    for (; j < TasksList.Count ; j++)
+                    for (; j < TasksList.Count; j++)
                     {
                         var tmpDuration = duration + TasksList[j].Duration;
 
@@ -83,12 +81,12 @@ namespace MPD_McNaughton_algorithm
                             TasksList[j].Duration = TasksList[j].Duration - (tmpDuration - Cmax);
 
                             tmpTask.Duration = (tmpDuration - Cmax);
-                            
+
                             TasksList.Insert(j + 1, tmpTask);
 
                             ProcessorsList[i].ProcessorTasksList.Add(TasksList[j]);
 
-                            jcopy = j+1;
+                            jcopy = j + 1;
                             j = TasksList.Count; // wyjscie z petli taskows
                         }
                         else
