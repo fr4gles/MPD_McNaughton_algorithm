@@ -28,13 +28,13 @@ namespace MPD_McNaughton_algorithm
                 var start = 0;
                 foreach (var t in p.ProcessorTasksList)
                 {
-                    int end = start + t.Duration;
+                    var end = start + t.Duration;
+//                    MyChart.Series[j].Points.AddXY(p.ProcessorNumber, end);
                     MyChart.Series[j].Points.AddXY(p.ProcessorNumber, new object[] {start, end});
                     MyChart.Series[j].Points[MyChart.Series[j].Points.Count - 1].Label = t.Name;
                     start = end;
                     j++;
                 }
-
             }
         }
     }

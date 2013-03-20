@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -49,9 +48,9 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,8 +61,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -277,6 +276,29 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wykres Gantt\'a:";
             // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.Name = "myChartArea";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Location = new System.Drawing.Point(6, 19);
+            this.chart1.Name = "chart1";
+            series1.BackSecondaryColor = System.Drawing.Color.DarkGray;
+            series1.BorderColor = System.Drawing.Color.DarkGreen;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "myChartArea";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
+            series1.Color = System.Drawing.Color.MediumSeaGreen;
+            series1.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
+            series1.Name = "myGanttChartSerie";
+            series1.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(606, 298);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "GanttChart";
+            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -299,31 +321,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(416, 71);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
-            // 
-            // chart1
-            // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "myChartArea";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(6, 19);
-            this.chart1.Name = "chart1";
-            series1.BackSecondaryColor = System.Drawing.Color.DarkGray;
-            series1.BorderColor = System.Drawing.Color.DarkGreen;
-            series1.BorderWidth = 2;
-            series1.ChartArea = "myChartArea";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series1.Color = System.Drawing.Color.MediumSeaGreen;
-            series1.Legend = "Legend1";
-            series1.Name = "myGanttChartSerie";
-            series1.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(606, 298);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "GanttChart";
             // 
             // Form1
             // 
@@ -348,8 +345,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
