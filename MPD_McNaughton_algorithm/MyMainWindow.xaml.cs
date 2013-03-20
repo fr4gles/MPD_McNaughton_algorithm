@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-using System.Windows.Forms;
 using System.Windows.Forms.Integration;
-using System.Windows.Forms.DataVisualization;
 
 namespace MPD_McNaughton_algorithm
 {
@@ -25,19 +16,45 @@ namespace MPD_McNaughton_algorithm
         public MyMainWindow()
         {
             InitializeComponent();
-            
-            wfHost = new WindowsFormsHost();
-//            if(myChart == null)
-//                throw new Exception("Ulala");
-            //myChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 
-//            myChart.Series.Add("My");
-//
-//            for (int i = 0; i < 2000; i++)
+            wfHost = new WindowsFormsHost();
+
+            var tmp = new ObservableCollection<ZadaniaItems>();
+            tmp.Add(new ZadaniaItems() { Zadanie = "Z1", CzasWykonania = 2 });
+            tmp.Add(new ZadaniaItems() { Zadanie = "Z2", CzasWykonania = 5 });
+            tmp.Add(new ZadaniaItems() { Zadanie = "Z3", CzasWykonania = 3 });
+            tmp.Add(new ZadaniaItems() { Zadanie = "Z4", CzasWykonania = 7 });
+
+
+//            dataGrid.Columns.Add(new DataGridTextColumn()
 //            {
-//                // Add X and Y values for a point. 
-//                myChart.Series["My"].Points.AddXY(i, i);
-//            }
+//                Header = "Zadanie:",
+//                Binding = new Binding("Path=Zadanie.Nr")
+//            });
+//
+//            dataGrid.Columns.Add(new DataGridTextColumn()
+//            {
+//                Header = "Czas wykonania:",
+//                Binding = new Binding("Path=Zadanie.CzasWykonania")
+//            });
+
+            dataGrid.ItemsSource = tmp;
+            //dataGrid.ItemStringFormat = "{}{0:N0}";
+
+//            dataGrid.Columns[0].IsReadOnly = true;
         }
+
+//        private void dataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+//        {
+//            //dataGrid.Items.Add(new ZadaniaItems() { Zadanie = "Z4", CzasWykonania = 7 });
+//        }
+
+
+    }
+
+    class ZadaniaItems
+    {
+        public String Zadanie { get; set; }
+        public int CzasWykonania { get; set; }
     }
 }

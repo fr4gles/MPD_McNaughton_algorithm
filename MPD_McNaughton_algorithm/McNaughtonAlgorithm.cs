@@ -37,7 +37,7 @@ namespace MPD_McNaughton_algorithm
 
                         Processors[i++].addTask(new Task(task.Name, tmp));
 //                        Processors[i+1].TaskDuration += (tmp);
-//                        Processors[i+1].Tasks.Add(new Task(task.Name, tmp));
+//                        Processors[i+1].Tasks.Add(new Task(task.Czas_wykonania, tmp));
                     }
                 }
             }
