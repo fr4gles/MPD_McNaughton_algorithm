@@ -2,69 +2,116 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MPD_McNaughton_algorithm
 {
-    class McNaughtonAlgorithm
+    public class McNaughtonAlgorithm
     {
-        public McNaughtonAlgorithm(List<Processor> proc, List<Task> tasks)
+        public List<Processor> ProcessorsList;
+        public List<Task> TasksList;
+        public static Int32 Cmax;
+
+        public McNaughtonAlgorithm(int numberOfProcessors)
         {
-            Processors = proc;
-            Tasks = tasks;
-            CMax = 0;
+            ProcessorsList = new List<Processor>();
+            TasksList = new List<Task>();
+
+            Cmax = -1;
+
+            AddProcessors(numberOfProcessors);
         }
 
-        public Boolean Do()
+        public void Go()
         {
-            if (CMax.Equals(0) && ( Tasks.Count < 1 || Processors.Count < 1 ))
-                return false;
+            CalculateCmax();
 
-            Int32 tmp = 0;
-            for (int i = 0; i < Processors.Count; i++)
+            StartAlgo();
+
+
+        }
+
+        public void ClearObj()
+        {
+            if(ProcessorsList != null)
+                ProcessorsList.Clear();
+            
+            if(TasksList != null)
+                TasksList.Clear();
+
+            Cmax = -1;
+        }
+
+        public void AddProcessors(int numberOfProcessors)
+        {
+            for (var i = 0; i < numberOfProcessors; ++i)
+                ProcessorsList.Add(new Processor(i));
+        }
+
+        public void CalculateCmax()
+        {
+            var tmpList = new List<Task>(TasksList);
+            tmpList = tmpList.OrderBy(x => x.Duration).ToList();
+            
+            var max = tmpList[tmpList.Count - 1].Duration;
+
+            var sum = tmpList.Sum(task => task.Duration);
+
+            Cmax = Math.Max(max, sum/ProcessorsList.Count - 1);
+        }
+
+        private void StartAlgo()
+        {
+            try
             {
-                tmp = 0;
-                foreach (var task in Tasks)
+                TasksList = TasksList.OrderBy(a => Guid.NewGuid()).ToList();
+                var j = 0;
+                var jcopy = 0;
+                for (var i = 0; i < ProcessorsList.Count; ++i)
                 {
-                    if (Processors[i].TaskDuration + task.Duration <= CMax)
-                    {
-                        Processors[i].addTask(task);
-//                        Processors[i].Tasks.Add(task);
-//                        Processors[i].TaskDuration += task.Duration;
-                    }
-                    else
-                    {
-                        tmp = CMax - Processors[i].TaskDuration;
+                    var duration = 0;
+                    j = jcopy;
 
-                        Processors[i++].addTask(new Task(task.Name, tmp));
-//                        Processors[i+1].TaskDuration += (tmp);
-//                        Processors[i+1].Tasks.Add(new Task(task.Czas_wykonania, tmp));
+                    for (; j < TasksList.Count ; j++)
+                    {
+                        var tmpDuration = duration + TasksList[j].Duration;
+
+                        if (tmpDuration > Cmax)
+                        {
+                            var tmpTask = (Task)TasksList[j].Clone();
+                            TasksList[j].Duration = TasksList[j].Duration - (tmpDuration - Cmax);
+
+                            tmpTask.Duration = (tmpDuration - Cmax);
+                            
+                            TasksList.Insert(j + 1, tmpTask);
+
+                            ProcessorsList[i].ProcessorTasksList.Add(TasksList[j]);
+
+                            jcopy = j+1;
+                            j = TasksList.Count; // wyjscie z petli taskows
+                        }
+                        else
+                        {
+                            duration += TasksList[j].Duration;
+
+                            ProcessorsList[i].ProcessorTasksList.Add(TasksList[j]);
+
+                            if (duration == Cmax)
+                            {
+                                jcopy = j + 1;
+                                j = TasksList.Count; // wyjscie z petli taskow
+                            }
+                        }
                     }
                 }
+
+
             }
-
-
-            return true;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        public Boolean ResolveCmax()
-        {
-            if (Processors.Count < 1 || Tasks.Count < 1)
-                return false;
-
-            // licz sumę
-            var sum = Tasks.Aggregate(0, (current, task) => current + task.Duration);
-
-            // znajdz max liczbę w taskach
-            var maxFromTasks = Tasks.Max(t => t.Duration);
-
-            // znajdz max pomiędzy dwoma powyższymi
-            CMax = Math.Max( sum / Processors.Count, maxFromTasks);
-
-            return true;
-        }
-
-        public List<Task>       Tasks { get; private set; }
-        public List<Processor>  Processors { get; private set; }
-        public Int32            CMax { get; private set; }
     }
 }

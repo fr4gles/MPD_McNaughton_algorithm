@@ -1,25 +1,23 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MPD_McNaughton_algorithm
 {
-    class Processor
+    public class Processor
     {
-        public Processor(String name)
-        {
-            Name = name;
-            Tasks = null;
-        }
+        public int          ProcessorNumber { get; private set; }
+        public List<Task>   ProcessorTasksList { get; private set; } 
 
-        public void addTask(Task t)
+        public Processor(int processorNumber)
         {
-            Tasks.Add(t);
-            TaskDuration += t.Duration;
+            ProcessorNumber = processorNumber;
+            ProcessorTasksList = new List<Task>();
         }
-        public String Name { get; private set; }
-        public Int32 TaskDuration = 0;
-        public List<Task> Tasks;
     }
 }
