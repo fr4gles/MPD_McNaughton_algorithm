@@ -16,6 +16,7 @@ namespace MPD_McNaughton_algorithm
     {
         private McNaughtonAlgorithm mcnaughton;
         private List<Color> colors;
+        private Int32 UID = 0;
         public Form1()
         {
             InitializeComponent();
@@ -54,6 +55,8 @@ namespace MPD_McNaughton_algorithm
             dataGridView.Rows.Add(new object[] { "Zad28", "22" });
             dataGridView.Rows.Add(new object[] { "Zad29", "25" });
             dataGridView.Rows.Add(new object[] { "Zad30", "20" });
+
+            UID = dataGridView.Rows.Count;
         }
 
         private void ClearChart()
@@ -153,7 +156,7 @@ namespace MPD_McNaughton_algorithm
         {
             if (dataGridView != null)
                 if (dataGridView.CurrentRow != null)
-                    dataGridView.CurrentRow.Cells[0].Value = string.Format("Zad{0}", dataGridView.CurrentRow.Index.ToString());
+                    dataGridView.CurrentRow.Cells[0].Value = string.Format("Zad{0}", (UID++).ToString());
 //
 //            var c = dataGridView.RowCount;
 //            DataGridViewCell cell = dataGridView.Rows[c - 1].Cells[0];

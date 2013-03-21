@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnStart = new System.Windows.Forms.Button();
@@ -266,20 +266,20 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "myChartArea";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "myChartArea";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
-            series2.BackSecondaryColor = System.Drawing.Color.DarkGray;
-            series2.BorderColor = System.Drawing.Color.DarkGreen;
-            series2.BorderWidth = 2;
-            series2.ChartArea = "myChartArea";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series2.Color = System.Drawing.Color.MediumSeaGreen;
-            series2.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
-            series2.Name = "myGanttChartSerie";
-            series2.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series2);
+            series3.BackSecondaryColor = System.Drawing.Color.DarkGray;
+            series3.BorderColor = System.Drawing.Color.DarkGreen;
+            series3.BorderWidth = 2;
+            series3.ChartArea = "myChartArea";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
+            series3.Color = System.Drawing.Color.MediumSeaGreen;
+            series3.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
+            series3.Name = "myGanttChartSerie";
+            series3.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(606, 298);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "GanttChart";
@@ -319,9 +319,9 @@
             // CzasWykonania
             // 
             this.CzasWykonania.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CzasWykonania.HeaderText = "Czas wykonania:";
+            this.CzasWykonania.HeaderText = "Czas:";
             this.CzasWykonania.Name = "CzasWykonania";
-            this.CzasWykonania.Width = 103;
+            this.CzasWykonania.Width = 58;
             // 
             // Form1
             // 
