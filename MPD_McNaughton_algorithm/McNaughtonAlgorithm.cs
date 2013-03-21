@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MPD_McNaughton_algorithm
@@ -11,7 +9,7 @@ namespace MPD_McNaughton_algorithm
     {
         public List<Processor> ProcessorsList;
         public List<Task> TasksList;
-        public static Int32 Cmax;
+        public static Double Cmax;
 
         public McNaughtonAlgorithm(int numberOfProcessors)
         {
@@ -40,7 +38,7 @@ namespace MPD_McNaughton_algorithm
             if (TasksList != null)
                 TasksList.Clear();
 
-            Cmax = -1;
+            Cmax = -1.0;
         }
 
         public void AddProcessors(int numberOfProcessors)
@@ -58,11 +56,12 @@ namespace MPD_McNaughton_algorithm
 
             var sum = tmpList.Sum(task => task.Duration);
 
-            Cmax = Math.Max(max, sum / ProcessorsList.Count - 1);
+            Cmax = Math.Max(max, sum / ProcessorsList.Count);
         }
 
         private void StartAlgo()
         {
+            n = 0;
             try
             {
                 TasksList = TasksList.OrderBy(a => Guid.NewGuid()).ToList();
@@ -70,7 +69,7 @@ namespace MPD_McNaughton_algorithm
                 var jcopy = 0;
                 for (var i = 0; i < ProcessorsList.Count; ++i)
                 {
-                    var duration = 0;
+                    var duration = 0.0;
                     j = jcopy;
 
                     for (; j < TasksList.Count; j++)
@@ -87,6 +86,7 @@ namespace MPD_McNaughton_algorithm
                             TasksList.Insert(j + 1, tmpTask);
 
                             ProcessorsList[i].ProcessorTasksList.Add(TasksList[j]);
+//                            n++;
 
                             jcopy = j + 1;
                             j = TasksList.Count; // wyjscie z petli taskows
@@ -96,8 +96,9 @@ namespace MPD_McNaughton_algorithm
                             duration += TasksList[j].Duration;
 
                             ProcessorsList[i].ProcessorTasksList.Add(TasksList[j]);
+//                            n++;
 
-                            if (duration == Cmax)
+                            if (Math.Abs(duration - Cmax) < 0.001)
                             {
                                 jcopy = j + 1;
                                 j = TasksList.Count; // wyjscie z petli taskow

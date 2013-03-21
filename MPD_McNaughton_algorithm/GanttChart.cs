@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MPD_McNaughton_algorithm
@@ -11,6 +8,7 @@ namespace MPD_McNaughton_algorithm
     {
         public List<Processor> ProcessorsList;
         public Chart MyChart;
+
 
         public GanttChart(ref Chart myChart, List<Processor> processorsList)
         {
@@ -26,16 +24,14 @@ namespace MPD_McNaughton_algorithm
             int tmp = MyChart.Series.Count;
             foreach (var p in ProcessorsList)
             {
-                var start = 0;
+                var start = 0.0;
 
                 foreach (var t in p.ProcessorTasksList)
                 {
-                    if (j < tmp-1)
+                    if (j < tmp - 1)
                     {
                         var end = start + t.Duration;
-                        //                    MyChart.Series[j].Points.AddXY(p.ProcessorNumber, end);
-
-                        MyChart.Series[j].Points.AddXY(p.ProcessorNumber, new object[] {start, end});
+                        MyChart.Series[j].Points.AddXY(p.ProcessorNumber, new object[] { start, end });
                         MyChart.Series[j].Points[MyChart.Series[j].Points.Count - 1].Label = t.Name;
                         start = end;
                         j++;
