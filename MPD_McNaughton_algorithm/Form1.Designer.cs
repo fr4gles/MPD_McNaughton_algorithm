@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Zadanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CzasWykonania = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -51,6 +49,8 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.Zadanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CzasWykonania = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -140,25 +140,10 @@
             this.CzasWykonania});
             this.dataGridView.Location = new System.Drawing.Point(6, 19);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView.Size = new System.Drawing.Size(181, 479);
             this.dataGridView.TabIndex = 0;
-            // 
-            // Zadanie
-            // 
-            this.Zadanie.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Zadanie.HeaderText = "Zadanie:";
-            this.Zadanie.Name = "Zadanie";
-            this.Zadanie.ReadOnly = true;
-            this.Zadanie.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Zadanie.Width = 74;
-            // 
-            // CzasWykonania
-            // 
-            this.CzasWykonania.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CzasWykonania.HeaderText = "Czas wykonania:";
-            this.CzasWykonania.Name = "CzasWykonania";
-            this.CzasWykonania.Width = 103;
+            this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
             // 
             // groupBox3
             // 
@@ -281,20 +266,20 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "myChartArea";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "myChartArea";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
-            series1.BackSecondaryColor = System.Drawing.Color.DarkGray;
-            series1.BorderColor = System.Drawing.Color.DarkGreen;
-            series1.BorderWidth = 2;
-            series1.ChartArea = "myChartArea";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series1.Color = System.Drawing.Color.MediumSeaGreen;
-            series1.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
-            series1.Name = "myGanttChartSerie";
-            series1.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series1);
+            series2.BackSecondaryColor = System.Drawing.Color.DarkGray;
+            series2.BorderColor = System.Drawing.Color.DarkGreen;
+            series2.BorderWidth = 2;
+            series2.ChartArea = "myChartArea";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
+            series2.Color = System.Drawing.Color.MediumSeaGreen;
+            series2.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
+            series2.Name = "myGanttChartSerie";
+            series2.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(606, 298);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "GanttChart";
@@ -321,6 +306,22 @@
             this.richTextBox1.Size = new System.Drawing.Size(416, 71);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
+            // 
+            // Zadanie
+            // 
+            this.Zadanie.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Zadanie.HeaderText = "Zadanie:";
+            this.Zadanie.Name = "Zadanie";
+            this.Zadanie.ReadOnly = true;
+            this.Zadanie.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Zadanie.Width = 74;
+            // 
+            // CzasWykonania
+            // 
+            this.CzasWykonania.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.CzasWykonania.HeaderText = "Czas wykonania:";
+            this.CzasWykonania.Name = "CzasWykonania";
+            this.CzasWykonania.Width = 103;
             // 
             // Form1
             // 
@@ -360,8 +361,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zadanie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CzasWykonania;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -374,6 +373,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zadanie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CzasWykonania;
     }
 }
 

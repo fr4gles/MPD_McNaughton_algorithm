@@ -30,6 +30,30 @@ namespace MPD_McNaughton_algorithm
             dataGridView.Rows.Add(new object[] { "Zad4", "3" });
             dataGridView.Rows.Add(new object[] { "Zad5", "4" });
             dataGridView.Rows.Add(new object[] { "Zad6", "6" });
+            dataGridView.Rows.Add(new object[] { "Zad7", "12" });
+            dataGridView.Rows.Add(new object[] { "Zad8", "22" });
+            dataGridView.Rows.Add(new object[] { "Zad9", "25" });
+            dataGridView.Rows.Add(new object[] { "Zad10", "20" });
+            dataGridView.Rows.Add(new object[] { "Zad11", "11" });
+            dataGridView.Rows.Add(new object[] { "Zad12", "23" });
+            dataGridView.Rows.Add(new object[] { "Zad13", "16" });
+            dataGridView.Rows.Add(new object[] { "Zad14", "11" });
+            dataGridView.Rows.Add(new object[] { "Zad15", "18" });
+            dataGridView.Rows.Add(new object[] { "Zad16", "33" });
+            dataGridView.Rows.Add(new object[] { "Zad17", "12" });
+            dataGridView.Rows.Add(new object[] { "Zad18", "22" });
+            dataGridView.Rows.Add(new object[] { "Zad19", "25" });
+            dataGridView.Rows.Add(new object[] { "Zad20", "20" });
+            dataGridView.Rows.Add(new object[] { "Zad21", "11" });
+            dataGridView.Rows.Add(new object[] { "Zad22", "23" });
+            dataGridView.Rows.Add(new object[] { "Zad23", "16" });
+            dataGridView.Rows.Add(new object[] { "Zad24", "11" });
+            dataGridView.Rows.Add(new object[] { "Zad25", "18" });
+            dataGridView.Rows.Add(new object[] { "Zad26", "33" });
+            dataGridView.Rows.Add(new object[] { "Zad27", "12" });
+            dataGridView.Rows.Add(new object[] { "Zad28", "22" });
+            dataGridView.Rows.Add(new object[] { "Zad29", "25" });
+            dataGridView.Rows.Add(new object[] { "Zad30", "20" });
         }
 
         private void ClearChart()
@@ -76,9 +100,9 @@ namespace MPD_McNaughton_algorithm
 
             var ganttChart = new GanttChart(ref chart1, mcnaughton.ProcessorsList);
             ganttChart.MakeChart();
-            chart1.ChartAreas[0].AxisY.Maximum = McNaughtonAlgorithm.Cmax+1;
-            chart1.ChartAreas[0].AxisX.Maximum = mcnaughton.ProcessorsList.Count;
-            chart1.ChartAreas[0].AxisX.Minimum = -1;
+//            chart1.ChartAreas[0].AxisY.Maximum = McNaughtonAlgorithm.Cmax+1;
+//            chart1.ChartAreas[0].AxisX.Maximum = mcnaughton.ProcessorsList.Count;
+//            chart1.ChartAreas[0].AxisX.Minimum = -1;
         }
 
         public Color GetFreeColor()
@@ -98,7 +122,8 @@ namespace MPD_McNaughton_algorithm
         public void AddSeries()
         {
             chart1.Series.Clear();
-            for (var i = 0; i < mcnaughton.TasksList.Count; ++i)
+            var i = 0;
+            for (; i < mcnaughton.TasksList.Count; ++i)
             {
                 var s = new Series
                     {
@@ -112,6 +137,27 @@ namespace MPD_McNaughton_algorithm
                     };
                 chart1.Series.Add(s);
             }
+            chart1.Series.Add(new Series
+                {
+                    Name = (++i).ToString(CultureInfo.InvariantCulture),
+                    ChartType = SeriesChartType.RangeBar,
+                    Color = GetFreeColor(),
+                    BorderColor = Color.Black,
+                    BorderWidth = 2,
+                    MarkerStep = 1,
+                    CustomProperties = "DrawSideBySide=False"
+                });
+        }
+
+        private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (dataGridView != null)
+                if (dataGridView.CurrentRow != null)
+                    dataGridView.CurrentRow.Cells[0].Value = string.Format("Zad{0}", dataGridView.CurrentRow.Index.ToString());
+//
+//            var c = dataGridView.RowCount;
+//            DataGridViewCell cell = dataGridView.Rows[c - 1].Cells[0];
+//            cell.Value
         }
     }
 }

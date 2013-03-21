@@ -23,17 +23,23 @@ namespace MPD_McNaughton_algorithm
         public void MakeChart()
         {
             int j = 0;
+            int tmp = MyChart.Series.Count;
             foreach (var p in ProcessorsList)
             {
                 var start = 0;
+
                 foreach (var t in p.ProcessorTasksList)
                 {
-                    var end = start + t.Duration;
-//                    MyChart.Series[j].Points.AddXY(p.ProcessorNumber, end);
-                    MyChart.Series[j].Points.AddXY(p.ProcessorNumber, new object[] {start, end});
-                    MyChart.Series[j].Points[MyChart.Series[j].Points.Count - 1].Label = t.Name;
-                    start = end;
-                    j++;
+                    if (j < tmp-1)
+                    {
+                        var end = start + t.Duration;
+                        //                    MyChart.Series[j].Points.AddXY(p.ProcessorNumber, end);
+
+                        MyChart.Series[j].Points.AddXY(p.ProcessorNumber, new object[] {start, end});
+                        MyChart.Series[j].Points[MyChart.Series[j].Points.Count - 1].Label = t.Name;
+                        start = end;
+                        j++;
+                    }
                 }
             }
         }
