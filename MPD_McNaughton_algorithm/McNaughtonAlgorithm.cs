@@ -61,7 +61,6 @@ namespace MPD_McNaughton_algorithm
 
         private void StartAlgo()
         {
-            n = 0;
             try
             {
                 TasksList = TasksList.OrderBy(a => Guid.NewGuid()).ToList();

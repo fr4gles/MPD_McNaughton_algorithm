@@ -135,11 +135,22 @@ namespace MPD_McNaughton_algorithm
         public void PrepareInfoBox(ref McNaughtonAlgorithm mc, TimeSpan time)
         {
 //            var ilosc_wykorzystanych_procesow = 0;
+//            var tmp1 = false;
 //            foreach (var p in mcnaughton.ProcessorsList)
-//                if (p.ProcessorTasksList.Count > 0)
-//                    ilosc_wykorzystanych_procesow++;
+//                foreach (var t in p.ProcessorTasksList)
+//                {
+//                    if (Math.Abs(t.Duration - McNaughtonAlgorithm.Cmax) < 0.001)
+//                    {
+//                        ilosc_wykorzystanych_procesow++;
+//                    }
+//                    else if(tmp1==false)
+//                    {
+//                        tmp1 = true;
+//                        ilosc_wykorzystanych_procesow++;
+//                    }
+//                }
 
-            richTextBox1.Text = "Cmax = " + McNaughtonAlgorithm.Cmax;// +"\tIlość wykorzystanych procesów: " + McNaughtonAlgorithm.n + " (z " + mcnaughton.ProcessorsList.Count + " możliwych)";
+            richTextBox1.Text = "Cmax = " + McNaughtonAlgorithm.Cmax;// +"\tIlość wykorzystanych procesów: " + ilosc_wykorzystanych_procesow.ToString(CultureInfo.InvariantCulture) + " (z " + mcnaughton.ProcessorsList.Count + " możliwych)";
             mc.TasksList = mc.TasksList.OrderBy(x => x.Duration).ToList();
             richTextBox1.AppendText("\n"
                 + "Zadanie o najmniejszej wadze czasowej:\t\t" + mc.TasksList[0].Name + "\tczas : " + mc.TasksList[0].Duration.ToString("#.00") + "\n"
