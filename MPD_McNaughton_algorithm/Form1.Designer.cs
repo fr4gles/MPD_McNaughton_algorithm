@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericIloscProc = new System.Windows.Forms.NumericUpDown();
             this.btnStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGeneruj = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericDownTime = new System.Windows.Forms.NumericUpDown();
+            this.numericUpTime = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericIloscZadan = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -51,15 +51,16 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Zadanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CzasWykonania = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnZapisz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericIloscProc)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDownTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericIloscZadan)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -69,27 +70,39 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.btnZapisz);
+            this.groupBox1.Controls.Add(this.numericIloscProc);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(639, 48);
+            this.groupBox1.Size = new System.Drawing.Size(654, 48);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opcje podstawowe:";
             // 
-            // numericUpDown1
+            // numericIloscProc
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(227, 17);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 20);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericIloscProc.Location = new System.Drawing.Point(227, 17);
+            this.numericIloscProc.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericIloscProc.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericIloscProc.Name = "numericIloscProc";
+            this.numericIloscProc.Size = new System.Drawing.Size(51, 20);
+            this.numericIloscProc.TabIndex = 0;
+            this.numericIloscProc.Value = new decimal(new int[] {
             3,
             0,
             0,
             0});
+            this.numericIloscProc.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // btnStart
             // 
@@ -98,7 +111,7 @@
             this.btnStart.Location = new System.Drawing.Point(284, 14);
             this.btnStart.MinimumSize = new System.Drawing.Size(100, 0);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(349, 23);
+            this.btnStart.Size = new System.Drawing.Size(259, 23);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Start algorytmu McNaughton\'a";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -120,9 +133,9 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dataGridView);
-            this.groupBox2.Location = new System.Drawing.Point(657, 12);
+            this.groupBox2.Location = new System.Drawing.Point(672, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(193, 504);
+            this.groupBox2.Size = new System.Drawing.Size(193, 519);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Wprowadź dane:";
@@ -141,7 +154,7 @@
             this.dataGridView.Location = new System.Drawing.Point(6, 19);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView.Size = new System.Drawing.Size(181, 479);
+            this.dataGridView.Size = new System.Drawing.Size(181, 494);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
             // 
@@ -155,7 +168,7 @@
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(12, 66);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(639, 450);
+            this.groupBox3.Size = new System.Drawing.Size(654, 465);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opcje dodatkowe:";
@@ -163,28 +176,29 @@
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Controls.Add(this.btnGeneruj);
             this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Controls.Add(this.numericUpDown4);
-            this.groupBox6.Controls.Add(this.numericUpDown3);
+            this.groupBox6.Controls.Add(this.numericDownTime);
+            this.groupBox6.Controls.Add(this.numericUpTime);
             this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.numericUpDown2);
+            this.groupBox6.Controls.Add(this.numericIloscZadan);
             this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Location = new System.Drawing.Point(443, 19);
+            this.groupBox6.Location = new System.Drawing.Point(458, 19);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(184, 96);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Generuj losowe zadania";
             // 
-            // button1
+            // btnGeneruj
             // 
-            this.button1.Location = new System.Drawing.Point(6, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Generuj";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGeneruj.Location = new System.Drawing.Point(6, 68);
+            this.btnGeneruj.Name = "btnGeneruj";
+            this.btnGeneruj.Size = new System.Drawing.Size(172, 23);
+            this.btnGeneruj.TabIndex = 6;
+            this.btnGeneruj.Text = "Generuj";
+            this.btnGeneruj.UseVisualStyleBackColor = true;
+            this.btnGeneruj.Click += new System.EventHandler(this.btnGeneruj_Click);
             // 
             // label4
             // 
@@ -195,25 +209,45 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "-";
             // 
-            // numericUpDown4
+            // numericDownTime
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(137, 42);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown4.TabIndex = 4;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.numericDownTime.Location = new System.Drawing.Point(137, 42);
+            this.numericDownTime.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericDownTime.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericDownTime.Name = "numericDownTime";
+            this.numericDownTime.Size = new System.Drawing.Size(40, 20);
+            this.numericDownTime.TabIndex = 4;
+            this.numericDownTime.Value = new decimal(new int[] {
             15,
             0,
             0,
             0});
             // 
-            // numericUpDown3
+            // numericUpTime
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(85, 42);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown3.TabIndex = 3;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.numericUpTime.Location = new System.Drawing.Point(85, 42);
+            this.numericUpTime.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numericUpTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpTime.Name = "numericUpTime";
+            this.numericUpTime.Size = new System.Drawing.Size(40, 20);
+            this.numericUpTime.TabIndex = 3;
+            this.numericUpTime.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -227,13 +261,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Przedział czasowy (koszt wykonania): ";
             // 
-            // numericUpDown2
+            // numericIloscZadan
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(6, 42);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown2.TabIndex = 1;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numericIloscZadan.Location = new System.Drawing.Point(6, 42);
+            this.numericIloscZadan.Maximum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.numericIloscZadan.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericIloscZadan.Name = "numericIloscZadan";
+            this.numericIloscZadan.Size = new System.Drawing.Size(61, 20);
+            this.numericIloscZadan.TabIndex = 1;
+            this.numericIloscZadan.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -256,7 +300,7 @@
             this.groupBox5.Controls.Add(this.chart1);
             this.groupBox5.Location = new System.Drawing.Point(9, 121);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(624, 323);
+            this.groupBox5.Size = new System.Drawing.Size(639, 338);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Wykres Gantt\'a:";
@@ -266,21 +310,21 @@
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "myChartArea";
-            this.chart1.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "myChartArea";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(6, 19);
             this.chart1.Name = "chart1";
-            series3.BackSecondaryColor = System.Drawing.Color.DarkGray;
-            series3.BorderColor = System.Drawing.Color.DarkGreen;
-            series3.BorderWidth = 2;
-            series3.ChartArea = "myChartArea";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
-            series3.Color = System.Drawing.Color.MediumSeaGreen;
-            series3.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
-            series3.Name = "myGanttChartSerie";
-            series3.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(606, 298);
+            series1.BackSecondaryColor = System.Drawing.Color.DarkGray;
+            series1.BorderColor = System.Drawing.Color.DarkGreen;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "myChartArea";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.RangeBar;
+            series1.Color = System.Drawing.Color.MediumSeaGreen;
+            series1.CustomProperties = "DrawSideBySide=True, DrawingStyle=LightToDark";
+            series1.Name = "myGanttChartSerie";
+            series1.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(621, 313);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "GanttChart";
             // 
@@ -291,7 +335,7 @@
             this.groupBox4.Controls.Add(this.richTextBox1);
             this.groupBox4.Location = new System.Drawing.Point(9, 19);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(428, 96);
+            this.groupBox4.Size = new System.Drawing.Size(443, 96);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Wyniki:";
@@ -303,7 +347,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(6, 19);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(416, 71);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(431, 71);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -323,28 +368,40 @@
             this.CzasWykonania.Name = "CzasWykonania";
             this.CzasWykonania.Width = 58;
             // 
+            // btnZapisz
+            // 
+            this.btnZapisz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnZapisz.Enabled = false;
+            this.btnZapisz.Location = new System.Drawing.Point(549, 14);
+            this.btnZapisz.Name = "btnZapisz";
+            this.btnZapisz.Size = new System.Drawing.Size(99, 23);
+            this.btnZapisz.TabIndex = 2;
+            this.btnZapisz.Text = "Zapisz wykres";
+            this.btnZapisz.UseVisualStyleBackColor = true;
+            this.btnZapisz.Click += new System.EventHandler(this.btnZapisz_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 528);
+            this.ClientSize = new System.Drawing.Size(877, 543);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.MinimumSize = new System.Drawing.Size(620, 421);
+            this.MinimumSize = new System.Drawing.Size(800, 545);
             this.Name = "Form1";
             this.Text = "Projekt 1 / MPD / McNaughton sequence algorithm / Michał Franczyk";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericIloscProc)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDownTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericIloscZadan)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -360,21 +417,22 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericIloscProc;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericIloscZadan;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericDownTime;
+        private System.Windows.Forms.NumericUpDown numericUpTime;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGeneruj;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zadanie;
         private System.Windows.Forms.DataGridViewTextBoxColumn CzasWykonania;
+        private System.Windows.Forms.Button btnZapisz;
     }
 }
 
