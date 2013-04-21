@@ -153,7 +153,6 @@ namespace MPD_McNaughton_algorithm
             if (colors.Count < 1)
                 GenerateColors();
 
-
             Random random = new Random();
             var index = random.Next(colors.Count - 1);
             var tmpcolor = colors[index];
@@ -176,6 +175,7 @@ namespace MPD_McNaughton_algorithm
                         BorderWidth = 2,
                         MarkerStep = 1,
                         CustomProperties = "DrawSideBySide=False",
+                        ToolTip = "Czas trwania zadania: "+mcnaughton.TasksList[i].Duration,
                         AxisLabel = "id: " + i.ToString(CultureInfo.InvariantCulture)
                     };
                 chart1.Series.Add(s);
@@ -189,6 +189,7 @@ namespace MPD_McNaughton_algorithm
                     BorderWidth = 2,
                     MarkerStep = 1,
                     CustomProperties = "DrawSideBySide=False",
+                    ToolTip = "Czas trwania zadania: " + mcnaughton.TasksList[i].Duration,
                     AxisLabel = "id: " + i.ToString(CultureInfo.InvariantCulture)
                 });
         }
